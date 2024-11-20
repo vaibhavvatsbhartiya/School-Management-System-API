@@ -24,12 +24,6 @@ const classSchema = new mongoose.Schema({
   studentCount: {
     type: Number,
     default: 0 
-  },
-  role:{
-    type: String,
-    required: true,
-    enum: ['teacher', 'principal', 'Admin'],
-    default: 'teacher',
   }
 });
 

@@ -42,5 +42,24 @@ router.post("/teachers/new", async (req, res) => {
   }
 });
 
+router.get("/teachers", async (req, res) => {
+    try {
+      const teachers = await Teacher.find();
+  
+      // check in DB if there are any student exists
+      if (teachers == 0) {
+        return res.status(404).json({ message: "No teacher found" });
+      }
+  
+      // Respond with the list of students
+      res.status(200).json({
+        message: "All teachers retrieved successfully",
+        teachers,
+      });
+    } catch (error) {
+      console.error(error);
+      res.status(501).json({ message: "Server error", error: err.message });
+    }
+  });
 
 module.exports = router;

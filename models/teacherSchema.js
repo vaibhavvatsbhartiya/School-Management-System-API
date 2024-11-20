@@ -22,6 +22,11 @@ const teacherSchema = new mongoose.Schema({
     type: String, // No need for cloudinaryURL as a separate field
     // The URL will be stored directly as a string
   },
+  role:{
+    type: String,
+    enum: ['teacher', 'principal', 'Admin'],
+    default: 'teacher',
+  }
 });
 
 const Teacher = mongoose.model("Teachers", teacherSchema);

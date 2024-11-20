@@ -153,7 +153,10 @@ This repo will updated soon and also this API's public url will be share soon af
 3. Create route for Students.
 4. Create route for Teachers.
 5. Create route for Classes.
-6. Create route for Students, Teachers & Classes.
-7. Attendance tracking.
-8. Exam and results management.
-9. Class reports generation.
+6. Create controllers for Students, Teachers & Classes.
+7. Add JWT Auth.
+8. Protect routes to ensure only authorized users can perform operations.
+9. Allow uploading and updating profile images for students and teachers using Cloudinary.
+10. Attendance tracking.
+11. Exam and results management.
+12. Class reports generation.

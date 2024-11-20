@@ -1,2 +1,6 @@
 .env
 node_modules
+
+# un-used git branches or purpose completed branches (these branches are used during development and rignt now there is no use of thses right now)
+# there is a option of deletion of these but still just want to add them here for future references.
+MongoDBConfig/

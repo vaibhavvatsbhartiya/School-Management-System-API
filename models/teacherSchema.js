@@ -26,7 +26,11 @@ const teacherSchema = new mongoose.Schema({
     type: String,
     enum: ['teacher', 'principal', 'Admin'],
     default: 'teacher',
-  }
+  },
+  isDeleted: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 const Teacher = mongoose.model("Teachers", teacherSchema);

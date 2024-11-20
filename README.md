@@ -151,7 +151,7 @@ This repo will updated soon and also this API's public url will be share soon af
 1. Create Models ✅.
 2. Connected to MongoDB Atlas ✅.
 3. Create route for Students ✅.
-4. Create route for Teachers.
+4. Create route for Teachers ✅.
 5. Create route for Classes.
 6. Create controllers for Students, Teachers & Classes.
 7. Add JWT Auth.

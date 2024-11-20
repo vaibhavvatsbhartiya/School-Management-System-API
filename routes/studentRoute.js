@@ -126,4 +126,32 @@ router.put("/students/:id", async (req, res) => {
   }
 });
 
+// DELETE route to soft delete a student by ID
+router.delete("/students/:id", async (req, res) => {
+    try {
+      const { id } = req.params;  
+      const student = await Student.findById(id);
+  
+      if (!student) {
+        return res.status(404).json({ message: "Student not found" });
+      }
+  
+      // Soft delete the student by setting isDeleted to true
+      student.isDeleted = true;
+  
+      // Save the updated student document
+      await student.save();
+  
+      // Respond with a success message
+      res.status(200).json({
+        message: "Student soft deleted successfully",
+        student,
+      });
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({ message: "Server error", error: err.message });
+    }
+  });
+
+  
 module.exports = router;

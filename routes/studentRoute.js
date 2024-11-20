@@ -4,7 +4,7 @@ const Student = require("../models/studentSchema");
 const router = express.Router();
 
 // Post route to add a new student
-router.post("/students", async (req, res) => {
+router.post("/students/new", async (req, res) => {
   try {
     const { name, email, classId, profileImageUrl } = req.body;
 
@@ -31,6 +31,28 @@ router.post("/students", async (req, res) => {
     res.status(201).json({
       message: "Student added successfully",
       student: newStudent,
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(501).json({ message: "Server error", error: err.message });
+  }
+});
+
+// GET route to get all students
+router.get("/students", async (req, res) => {
+  try {
+    // fetch all the students from database
+    const students = await Student.find();
+
+    // check in DB if there are any student exists
+    if (students == 0) {
+      return res.status(404).json({ message: "No students found" });
+    }
+
+    // Respond with the list of students
+    res.status(200).json({
+      message: "All students retrieved successfully",
+      students,
     });
   } catch (error) {
     console.error(error);

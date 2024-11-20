@@ -45,7 +45,7 @@ router.post("/teachers/new", async (req, res) => {
   }
 });
 
-//  GET route to get all teachers 
+//  GET route to get all teachers
 router.get("/teachers", async (req, res) => {
   try {
     const teachers = await Teacher.find();
@@ -143,6 +143,26 @@ router.delete("/teachers/:id", async (req, res) => {
     // Respond with a success message
     res.status(200).json({
       message: "Teacher soft deleted successfully",
+      teacher,
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Server error", error: error.message });
+  }
+});
+
+// DELETE route for permanent deletion
+router.delete("/teachers/permanent/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const teacher = await Teacher.findByIdAndDelete(id);
+
+    if (!teacher) {
+      return res.status(404).json({ message: "Teacher not found" });
+    }
+
+    res.status(200).json({
+      message: "Teacher's data permanently deleted successfully",
       teacher,
     });
   } catch (error) {

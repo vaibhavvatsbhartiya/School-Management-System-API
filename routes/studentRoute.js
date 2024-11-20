@@ -85,4 +85,45 @@ router.get("/students/:id", async (req, res) => {
   }
 });
 
+// PUT route to update student details by ID
+router.put("/students/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { name, email, classId, profileImageUrl } = req.body; // Extract the updated details from the request body
+
+    // Validate the input fields
+    if (!name && !email && !classId && !profileImageUrl) {
+      return res
+        .status(400)
+        .json({ message: "At least one field is required to update" });
+    }
+
+    // Find the student by ID
+    const student = await Student.findById(id);
+
+    // If student is not found, return 404
+    if (!student) {
+      return res.status(404).json({ message: "Student not found" });
+    }
+
+    // Update the student details
+    if (name) student.name = name;
+    if (email) student.email = email;
+    if (classId) student.classId = classId;
+    if (profileImageUrl) student.profileImageUrl = profileImageUrl;
+
+    // Save the updated student document
+    await student.save();
+
+    // Respond with the updated student data
+    res.status(200).json({
+      message: "Student updated successfully",
+      student,
+    });
+  } catch (error) {
+    console.error(err);
+    res.status(500).json({ message: "Server error", error: error.message });
+  }
+});
+
 module.exports = router;

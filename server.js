@@ -1,9 +1,8 @@
 // imports
 const express = require("express");
 require("dotenv").config();
-const connectToDatabase = require("./config/MongoDB");
+const connectToDatabase = require("./config/mongoDB");
 const messageSent = require('./messageUI');
-
 
 // express setup
 const app = express();

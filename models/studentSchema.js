@@ -3,12 +3,12 @@ const mongoose = require("mongoose");
 const studentSchema = new mongoose.Schema({
   name: {
     type: String,
-    required: true, 
+    required: true,
   },
   email: {
     type: String,
-    required: true, 
-    unique: true, 
+    required: true,
+    unique: true,
   },
   classId: {
     type: mongoose.Schema.Types.ObjectId,
@@ -20,7 +20,11 @@ const studentSchema = new mongoose.Schema({
     default: Date.now,
   },
   profileImageUrl: {
-    type: String
+    type: String,
+  },
+  isDeleted: {
+    type: Boolean,
+    default: false,
   },
 });
 

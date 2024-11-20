@@ -60,5 +60,29 @@ router.get("/students", async (req, res) => {
   }
 });
 
+//  GET route to get a student by ID
+router.get("/students/:id", async (req, res) => {
+  try {
+    // get id
+    const { id } = req.params;
+
+    // find student by id from database
+    const student = await Student.findById(id);
+
+    // error handling
+    if (!student) {
+      return res.status(404).json({ message: "Student not found" });
+    }
+
+    // respond with the student data available
+    res.status(200).json({
+      message: "Student retrieved successfully",
+      student,
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(501).json({ message: "Server error", error: error.message });
+  }
+});
 
 module.exports = router;

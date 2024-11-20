@@ -104,8 +104,8 @@ A backend API for managing students, teachers, and classes with features like pr
 3. Create a `.env` file and add the following:
    ```
    PORT=3000
-    MONGO_URI= your mongo URI
-    JWT_SECRET_KEY=your_jwt_secret_key
+   MONGO_URI= your mongo URI
+   JWT_SECRET_KEY=your_jwt_secret_key
    ```
 4. Start the server:
    ```bash

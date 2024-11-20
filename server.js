@@ -80,7 +80,7 @@ const startServer = async () => {
       const messageSent = `The server is running on port: ${PORT}`;
       console.log(`${messageSent}`);
     });
-    // connectToDatabase();
+    connectToDatabase();
   } catch (error) {
     console.log(`Server Error: ${error}`);
   }

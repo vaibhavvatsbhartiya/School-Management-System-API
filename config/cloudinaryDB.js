@@ -3,22 +3,40 @@ require("dotenv").config();
 
 const connectToCloudinary = async () => {
   try {
+    // console.log('Cloudinary Config:', {
+    //   cloud_name: process.env.CLOUD_NAME,
+    //   api_key: process.env.API_KEY,
+    //   api_secret: process.env.API_SECRET,
+    // });
+
     Cloudinary.config({
-      cloud_name: `${process.env.CLOUD_NAME}`,
-      api_key: `${process.env.API_KEY}`,
-      api_secret: `${process.env.API_SECRET}`,
+      cloud_name: process.env.CLOUD_NAME,
+      api_key: process.env.API_KEY,
+      api_secret: process.env.API_SECRET,
     });
 
-    // Test connection by calling a Cloudinary API method, e.g., fetching the current account details
+    // Test connection by calling Cloudinary API ping
     // const accountInfo = await Cloudinary.api.ping();
-    
-    console.log('Successfully connected to Cloudinary'); // Log the successful connection
-  
+    // console.log('Cloudinary Account Info:', accountInfo);
+
+    console.log('Successfully connected to Cloudinary DB');
   } catch (error) {
-    console.error('Error connecting to Cloudinary:', error); 
+    console.error('Error connecting to Cloudinary:', error);
   }
 };
 
-connectToCloudinary();
 
-module.exports = { connectToCloudinary };
+
+// create a function which can handle the file upload feature
+const uploadFile = async (filePath) => {
+    try {
+        const result = await Cloudinary.uploader.upload(filePath); 
+        console.log(result);
+        return result;
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+module.exports = uploadFile; 
+module.exports = connectToCloudinary;

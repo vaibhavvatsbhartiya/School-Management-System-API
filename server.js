@@ -2,10 +2,11 @@
 const express = require("express");
 require("dotenv").config();
 const connectToDatabase = require("./config/mongoDB");
-const messageSent = require('./messageUI');
-const studentRoutes = require('./routes/studentRoute');
-const teacherRoutes = require('./routes/teacherRoute');
-const classRoutes = require('./routes/classRoute');
+const messageSent = require("./messageUI");
+const studentRoutes = require("./routes/studentRoute");
+const teacherRoutes = require("./routes/teacherRoute");
+const classRoutes = require("./routes/classRoute");
+const connectToCloudinary = require("./config/cloudinaryDB");
 
 // express setup
 const app = express();
@@ -28,6 +29,9 @@ app.use("/api", classRoutes);
 // start server
 const startServer = async () => {
   try {
+    // Connect to Cloudinary before starting the server
+    await connectToCloudinary();
+
     app.listen(PORT, () => {
       const messageSent = `The server is running on port: ${PORT}`;
       console.log(`${messageSent}`);

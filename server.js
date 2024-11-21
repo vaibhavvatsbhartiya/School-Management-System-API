@@ -4,7 +4,8 @@ require("dotenv").config();
 const connectToDatabase = require("./config/mongoDB");
 const messageSent = require('./messageUI');
 const studentRoutes = require('./routes/studentRoute');
-const teacherRoutes = require('./routes/teacherRoute')
+const teacherRoutes = require('./routes/teacherRoute');
+const classRoutes = require('./routes/classRoute');
 
 // express setup
 const app = express();
@@ -22,6 +23,7 @@ app.get("/", (req, res) => {
 // Use the imported routes for students, teachers
 app.use("/api", studentRoutes);
 app.use("/api", teacherRoutes);
+app.use("/api", classRoutes);
 
 // start server
 const startServer = async () => {

@@ -41,23 +41,66 @@ const addTeacher = async (req, res) => {
 };
 
 // GET route to get all teachers
+// const getAllTeachers = async (req, res) => {
+//   try {
+//     const teachers = await Teacher.find();
+
+//     if (teachers.length === 0) {
+//       return res.status(404).json({ message: "No teacher found" });
+//     }
+
+//     res.status(200).json({
+//       message: "All teachers retrieved successfully",
+//       teachers,
+//     });
+//   } catch (error) {
+//     console.error(error);
+//     res.status(501).json({ message: "Server error", error: error.message });
+//   }
+// };
+
+
+// GET route to get all teachers with pagination
 const getAllTeachers = async (req, res) => {
   try {
-    const teachers = await Teacher.find();
+    // Get pagination parameters from query string, default to page 1 and limit 10
+    const page = parseInt(req.query.page) || 1;  // Default to page 1 if no page is provided
+    const limit = parseInt(req.query.limit) || 10;  // Default to 10 teachers per page if no limit is provided
+    const skip = (page - 1) * limit;  // Calculate how many documents to skip based on the current page
+
+    // Find teachers with pagination
+    const teachers = await Teacher.find()
+      .skip(skip)
+      .limit(limit);
+
+    // Get the total number of teachers for pagination info
+    const totalTeachers = await Teacher.countDocuments();
 
     if (teachers.length === 0) {
-      return res.status(404).json({ message: "No teacher found" });
+      return res.status(404).json({ message: "No teachers found" });
     }
 
+    // Return paginated teachers along with pagination info
     res.status(200).json({
-      message: "All teachers retrieved successfully",
+      message: "Teachers retrieved successfully",
       teachers,
+      pagination: {
+        totalTeachers,  // Total number of teachers in the database
+        totalPages: Math.ceil(totalTeachers / limit),  // Total pages
+        currentPage: page,  // Current page number
+        limit,  // Number of items per page
+      },
     });
   } catch (error) {
-    console.error(error);
-    res.status(501).json({ message: "Server error", error: error.message });
+    console.error('Error fetching teachers:', error);
+    res.status(500).json({
+      message: "Server error, could not retrieve teachers",
+      error: error.message,
+    });
   }
 };
+
+
 
 // GET route to get a teacher by ID
 const getTeacherById = async (req, res) => {

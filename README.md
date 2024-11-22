@@ -182,4 +182,8 @@ This repo will updated soon and also this API's public url will be share soon af
 8. Create controllers for Students, Teachers & Classes ✅.
 9. Add JWT Auth ✅.
 10. Protect routes to ensure only authorized users can perform operations ✅.
-11. Allow uploading and updating profile images for students and teachers using Cloudinary.
+11. Add a pagination in the get route of student and teacher ✅. 
+   - (Teacher example: `Live_URL/api/teachers?page=1&limit=6`) 
+   - (Student example: `Live_URL/api/students?page=1&limit=2`)
+   ***set limit and page according to your need.***
+12. Allow uploading and updating profile images for students and teachers using Cloudinary 📈.

@@ -137,31 +137,32 @@ A backend API for managing students, teachers, and classes with features like pr
 
 | Method | Endpoint        | Description            |
 | ------ | --------------- | ---------------------- |
-| POST   | `/students`     | Add a new student      |
-| GET    | `/students`     | Get all students       |
-| GET    | `/students/:id` | Get a student by ID    |
-| PUT    | `/students/:id` | Update student details |
-| DELETE | `/students/:id` | Soft delete a student  |
+| POST   | `/api/students`     | Add a new student      |
+| GET    | `/api/students`     | Get all students       |
+| GET    | `/api/students/:id` | Get a student by ID    |
+| PUT    | `/api/students/:id` | Update student details |
+| DELETE | `/api/students/:id` | Soft delete a student  |
 
 ### Teachers
 
 | Method | Endpoint        | Description            |
 | ------ | --------------- | ---------------------- |
-| POST   | `/teachers`     | Add a new teacher      |
-| GET    | `/teachers`     | Get all teachers       |
-| GET    | `/teachers/:id` | Get a teacher by ID    |
-| PUT    | `/teachers/:id` | Update teacher details |
-| DELETE | `/teachers/:id` | Soft delete a teacher  |
+| POST   | `/api/teachers`     | Add a new teacher      |
+| POST   | `/api/auth`         | Use JWT and get token  |
+| GET    | `/api/teachers`     | Get all teachers       |
+| GET    | `/api/teachers/:id` | Get a teacher by ID    |
+| PUT    | `/api/teachers/:id` | Update teacher details |
+| DELETE | `/api/teachers/:id` | Soft delete a teacher  |
 
 ### Classes
 
 | Method | Endpoint       | Description          |
 | ------ | -------------- | -------------------- |
-| POST   | `/classes`     | Create a new class   |
-| GET    | `/classes`     | Get all classes      |
-| GET    | `/classes/:id` | Get a class by ID    |
-| PUT    | `/classes/:id` | Update class details |
-| DELETE | `/classes/:id` | Delete a class       |
+| POST   | `/api/classes`     | Create a new class   |
+| GET    | `/api/classes`     | Get all classes      |
+| GET    | `/api/classes/:id` | Get a class by ID    |
+| PUT    | `/api/classes/:id` | Update class details |
+| DELETE | `/api/classes/:id` | Delete a class       |
 
 ---
 

@@ -7,14 +7,22 @@ const studentRoutes = require("./routes/studentRoute");
 const teacherRoutes = require("./routes/teacherRoute");
 const classRoutes = require("./routes/classRoute");
 const connectToCloudinary = require("./config/cloudinaryDB");
+const fileUpload = require("express-fileupload");
+
 
 // express setup
 const app = express();
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT ;
+
 
 // Middleware to parse JSON request bodies
 app.use(express.json());
+app.use(fileUpload({
+  useTempFiles: true, // Enables temporary file handling
+  tempFileDir: "/tmp/", // Temporary directory for uploaded files
+}));
+
 
 // setup the first route
 app.get("/", (req, res) => {

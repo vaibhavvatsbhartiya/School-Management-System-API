@@ -8,8 +8,10 @@ router.post("/students/new", async (req, res) => {
   try {
     const { name, email, classId, profileImageUrl } = req.body;
 
+    // const profileImage = req.files?.profileImage; // Assume file upload uses `form-data`
+
     // Validate the required feilds
-    if (!name || !email || !classId) {
+    if (!name || !email || !classId ) {
       return res
         .status(400)
         .json({ message: "Name, email, and classId are required." });
@@ -20,6 +22,11 @@ router.post("/students/new", async (req, res) => {
     if (existingStudent) {
       return res.status(400).json({ message: "Email already exists" });
     }
+
+    // Upload the image to Cloudinary
+    // const uploadResult = await uploadFile(profileImage.tempFilePath); // Assumes you're using `express-fileupload`
+
+    // console.log(uploadResult);
 
     // create a new student document
     const newStudent = new Student({ name, email, classId, profileImageUrl });
@@ -34,7 +41,7 @@ router.post("/students/new", async (req, res) => {
     });
   } catch (error) {
     console.error(error);
-    res.status(501).json({ message: "Server error", error: err.message });
+    res.status(501).json({ message: "Server error", error: error.message });
   }
 });
 

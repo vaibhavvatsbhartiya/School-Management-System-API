@@ -9,7 +9,7 @@ const classRoutes = require("./routes/classRoute");
 const connectToCloudinary = require("./config/cloudinaryDB");
 // const fileUpload = require("express-fileupload");
 const bodyParser = require("body-parser");
-const teacherLoginRoute = require('./routes/auth')
+const teacherLoginRoute = require('./routes/authRoute');
 
 // express setup
 const app = express();

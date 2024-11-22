@@ -1,11 +1,10 @@
-const express = require("express");
+// controllers/authController.js
+
 const jwt = require("jsonwebtoken");
 const Teacher = require("../models/teacherSchema");
 require("dotenv").config();
 
-const router = express.Router();
-
-router.post("/auth", async (req, res) => {
+const authenticateAdmin = async (req, res) => {
   const { email } = req.body;
 
   try {
@@ -14,7 +13,7 @@ router.post("/auth", async (req, res) => {
 
     // If teacher not found
     if (!teacher) {
-      return res.status(404).json({ message: "user not found!" });
+      return res.status(404).json({ message: "User not found!" });
     }
 
     // Check if the role is Admin
@@ -26,7 +25,7 @@ router.post("/auth", async (req, res) => {
     const token = jwt.sign(
       { email: teacher.email, role: teacher.role },
       process.env.JWT_SECRET,
-      { expiresIn: `${process.env.JWT_EXPIRES_IN}` }
+      { expiresIn: process.env.JWT_EXPIRES_IN }
     );
 
     res.json({ message: "Login successful!", token });
@@ -34,6 +33,6 @@ router.post("/auth", async (req, res) => {
     console.error("Error logging in teacher:", error);
     res.status(500).json({ message: "Internal server error!" });
   }
-});
+};
 
-module.exports = router;
+module.exports =  authenticateAdmin ;

@@ -154,10 +154,11 @@ This repo will updated soon and also this API's public url will be share soon af
 4. Create route for Teachers ✅.
 5. Create route for Classes ✅.
 6. Connected to Cloudinary DB ✅.
-7. Create controllers for Students, Teachers & Classes.
-8. Add JWT Auth.
-9. Protect routes to ensure only authorized users can perform operations.
-10. Allow uploading and updating profile images for students and teachers using Cloudinary.
-11. Attendance tracking.
-12. Exam and results management.
-13. Class reports generation.
+7. Handle common errors like duplicate entries(email) while creating a new entry(Student, Teacher) ✅.
+8. Create controllers for Students, Teachers & Classes.
+9. Add JWT Auth.
+10. Protect routes to ensure only authorized users can perform operations.
+11. Allow uploading and updating profile images for students and teachers using Cloudinary.
+12. Attendance tracking.
+13. Exam and results management.
+14. Class reports generation.

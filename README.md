@@ -123,6 +123,8 @@ A backend API for managing students, teachers, and classes with features like pr
    CLOUD_NAME=your_cloud_name
    API_KEY=your_api_key
    API_SECRET=your_api_secret
+   JWT_SECRET=your_jwt_secret
+   JWT_EXPIRES_IN=your_chosen_time_for_token_to_expires
    ```
 4. Start the server:
    ```bash
@@ -135,8 +137,8 @@ A backend API for managing students, teachers, and classes with features like pr
 
 ### Students
 
-| Method | Endpoint        | Description            |
-| ------ | --------------- | ---------------------- |
+| Method | Endpoint            | Description            |
+| ------ | ------------------- | ---------------------- |
 | POST   | `/api/students`     | Add a new student      |
 | GET    | `/api/students`     | Get all students       |
 | GET    | `/api/students/:id` | Get a student by ID    |
@@ -145,8 +147,8 @@ A backend API for managing students, teachers, and classes with features like pr
 
 ### Teachers
 
-| Method | Endpoint        | Description            |
-| ------ | --------------- | ---------------------- |
+| Method | Endpoint            | Description            |
+| ------ | ------------------- | ---------------------- |
 | POST   | `/api/teachers`     | Add a new teacher      |
 | POST   | `/api/auth`         | Use JWT and get token  |
 | GET    | `/api/teachers`     | Get all teachers       |
@@ -156,8 +158,8 @@ A backend API for managing students, teachers, and classes with features like pr
 
 ### Classes
 
-| Method | Endpoint       | Description          |
-| ------ | -------------- | -------------------- |
+| Method | Endpoint           | Description          |
+| ------ | ------------------ | -------------------- |
 | POST   | `/api/classes`     | Create a new class   |
 | GET    | `/api/classes`     | Get all classes      |
 | GET    | `/api/classes/:id` | Get a class by ID    |
